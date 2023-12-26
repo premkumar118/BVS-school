@@ -1,0 +1,281 @@
+{% extends 'layouts\main.html' %}
+{% load static %}
+
+    {% block title %}
+        Class Four
+   {% endblock title %}
+    {% block css %}
+        <!-- favicon -->
+        <link rel="shortcut icon" type="image/png" href="{% static 'assets/img/bvs school bg.png' %}">
+        <!-- google font -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+        <!-- fontawesome -->
+        <link rel="stylesheet" href="{% static 'assets/css/all.min.css' %}">
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+        <!-- owl carousel -->
+        <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}">
+        <!-- magnific popup -->
+        <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+        <!-- animate css -->
+        <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+        <!-- mean menu css -->
+        <link rel="stylesheet" href="{% static 'assets/css/meanmenu.min.css' %}">
+        <!-- main style -->
+        <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+        <!-- responsive -->
+        <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    {% endblock css %}
+
+    {% block content %}
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+	
+	<!-- header --> 
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="/">
+								<img width="60px" src="{% static 'assets/img/bvs school bg.png' %}" alt="school-logo">
+							</a>
+						</div>
+						<!-- logo -->
+
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+								<li><a href="http://127.0.0.1:3001/teacher_page/{{teacher.Name}}/class_1" style="text-decoration: none;">Class 1</a></li>
+								<li><a href="http://127.0.0.1:3001/teacher_page/{{teacher.Name}}/class_2" style="text-decoration: none;">Class 2</a></li>
+								<li><a href="http://127.0.0.1:3001/teacher_page/{{teacher.Name}}/class_3" style="text-decoration: none;">Class 3</a></li>
+								<li><a href="http://127.0.0.1:3001/teacher_page/{{teacher.Name}}/class_5" style="text-decoration: none;">Class 5</a></li>
+								<li><a href="http://127.0.0.1:3001/teacher_page/{{teacher.Name}}/class_6" style="text-decoration: none;">Class 6</a></li>
+								<li><a href="http://127.0.0.1:3001/teacher_page/{{teacher.Name}}/class_7" style="text-decoration: none;">Class 7</a></li>
+								<li><a href="http://127.0.0.1:3001/teacher_page/{{teacher.Name}}/teacher_work" style="text-decoration: none;">Back</a></li>
+							</ul>
+						</nav>
+						
+						<div class="mobile-menu"></div>
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
+	
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Indian Institute of Education, Honnali</p>
+						<h1>Class Four Works</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	<!-- latest news --> 
+	<div class="latest-news mt-80 mb-80">
+		<div class="container">
+            <div class="row mb-5 justify-content-center ">
+                <div class="search-container d-flex justify-content-center" style="margin-bottom: 10px;">
+                    <input type="text" id="studentNameInput" placeholder="Search by Subject name..." 
+                    style="padding: 10px 25px 10px 25px;
+                    color: #F28123;
+                    font-weight: 600;
+                    text-align: center;
+                    font-size: 20px;
+                    border: 2px solid #F28123;
+                    border-radius: 15px;"
+                    >
+                </div>
+                <div class="search-container d-flex justify-content-center">
+                    <input type="text" id="studentSubjectInput" placeholder="Search by Student name..." 
+                    style="padding: 10px 25px 10px 25px;
+                    color: #F28123;
+                    font-weight: 600;
+                    text-align: center;
+                    font-size: 20px;
+                    border: 2px solid #F28123;
+                    border-radius: 15px;"
+                    >
+                </div>
+                
+			</div>
+			<div class="row">
+                {% if studentWorks %}
+				{% for studentWork in studentWorks %}
+					<div class="col-lg-4 col-md-6 studentWork">
+						<div class="single-latest-news studentWorktwo">
+							<div class="news-text-box">
+								<h3><a style="text-decoration: none;" class="studentName">{{studentWork.studentName}}</a></h3>
+								<p class="blog-meta">
+									<span class="author"><i class="fas fa-user" class="subjectName"></i> {{studentWork.subjectName}}</span>
+									<span class="date"><i class="fas fa-calendar"></i> {{studentWork.uploaded_at}}</span>
+								</p>
+								<a class="read-more-btn" style="text-decoration: none;"> <button 
+									style="background: transparent;
+									border: none;
+									outline: none;
+									margin-right: 5px;
+									font-weight: 600;"
+									onmouseover="this.style.color='#051922'; this.style.color='#F28123';"
+									onmouseout="this.style.color='#F28123'; this.style.color='#000';"
+									onclick="addComment('{{studentWork.id}}')">
+									Student Work <i class="fas fa-angle-right"></i>
+								</button></a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+                {% else %}
+                    <p class="text-danger">No Student work in this class</p>
+                {% endif %}
+			</div>
+		</div>
+	</div>
+	<!-- end latest news -->
+
+	<!-- footer -->
+	<div class="footer-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box about-widget">
+						<h2 class="widget-title">About us</h2>
+						<p><p>Indian Institute of Education, Honnali</p>
+							<p>B.V.S. Pre Primary School</p>
+							<p>Bharatiya Kannada Senior Primary School</p> 
+							<p>B.V.S. English Medium High School</p> 
+							<p>Indian Institute Kannada High School</p>
+							</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box get-in-touch">
+						<h2 class="widget-title">Get in Touch</h2>
+						<ul>
+							<li>Santhe Maidana, Honnali, Karnataka 577217</li>
+							<li>Email: bkhpshonnali@gmail.com | b.v.s.honnali1987@gmail.com</li>
+							<li>Ph: 08188-252331</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box pages">
+						<h2 class="widget-title">Pages</h2>
+						<ul>
+							<li><a href="/" style="text-decoration: none;">Home</a></li>
+							<li><a href="/about" style="text-decoration: none;">About</a></li>
+							<li><a href="/staff" style="text-decoration: none;">Staff</a></li>
+							<li><a href="/blog" style="text-decoration: none;">Blog</a></li>
+							<li><a href="/contact" style="text-decoration: none;">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box subscribe">
+						<h2 class="widget-title">Subscribe</h2>
+						<p>Subscribe to our mailing list to get the latest updates.</p>
+						<form action="/">
+							<input type="email" placeholder="Email">
+							<button type="submit"><i class="fas fa-paper-plane"><a href="http://b.v.s.honnali1987@gmail.com"></a></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end footer -->
+	
+	<!-- copyright -->
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<p>Copyrights &copy; 2019 - <a>BVS High School</a>,  All Rights Reserved.</p>
+				</div>
+				<div class="col-lg-6 text-right col-md-12">
+					<div class="social-icons">
+						<ul>
+							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    {% endblock content %}
+    
+    {% block script %}
+
+
+<script>
+    const subjectInput = document.getElementById("studentSubjectInput")
+    const nameInput = document.getElementById("studentNameInput")
+
+    const studentWorkButtons = document.querySelectorAll('.studentWork .studentWorktwo')
+
+    function filterStudentWorks() {
+        const subject_name = subjectInput.value.toLowerCase()
+        const student_name = nameInput.value.toLowerCase()
+
+        studentWorkButtons.forEach(button => {
+            const buttonText = button.querySelector('h3 a').textContent.toLowerCase()
+            const studentText = button.querySelector('span').textContent.toLowerCase()
+
+            if ((subject_name && buttonText.includes(subject_name)) || !subject_name) {
+                if ((student_name && studentText.includes(student_name)) || !student_name) {
+                    button.style.display = 'flex'
+                } else {
+                    button.style.display = 'none'
+                }
+            } else {
+                button.style.display = 'none'
+            }
+        })
+    }
+
+    subjectInput.addEventListener("input", filterStudentWorks);
+    nameInput.addEventListener("input", filterStudentWorks);
+</script>
+    
+        <script src="{% static 'js/navigateTo.js' %}"></script>
+        <!-- jquery -->
+        <script src="{% static 'assets/js/jquery-1.11.3.min.js' %}"></script>
+        <!-- bootstrap -->
+        <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+        <!-- count down -->
+        <script src="{% static 'assets/js/jquery.countdown.js' %}"></script>
+        <!-- isotope -->
+        <script src="{% static 'assets/js/jquery.isotope-3.0.6.min.js' %}"></script>
+        <!-- waypoints -->
+        <script src="{% static 'assets/js/waypoints.js' %}"></script>
+        <!-- owl carousel -->
+        <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+        <!-- magnific popup -->
+        <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+        <!-- mean menu -->
+        <script src="{% static 'assets/js/jquery.meanmenu.min.js' %}"></script>
+        <!-- sticker js -->
+        <script src="{% static 'assets/js/sticker.js' %}"></script>
+        <!-- main js -->
+        <script src="{% static 'assets/js/main.js' %}"></script>
+    {% endblock script %}

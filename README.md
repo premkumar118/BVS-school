@@ -1,2 +1,0 @@
-# BVS-school
-testing
