@@ -1,0 +1,279 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block title %}
+    Teacher | MyProfile
+{% endblock title %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css\teacher_page\_teacherProfile.css' %}">
+<!-- favicon -->
+<link rel="shortcut icon" type="image/png" href="{% static 'assets/img/bvs school bg.png' %}">
+<!-- google font -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+<!-- fontawesome -->
+<link rel="stylesheet" href="{% static 'assets/css/all.min.css' %}">
+<!-- bootstrap -->
+<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+<!-- owl carousel -->
+<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}">
+<!-- magnific popup -->
+<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+<!-- animate css -->
+<link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+<!-- mean menu css -->
+<link rel="stylesheet" href="{% static 'assets/css/meanmenu.min.css' %}">
+<!-- main style -->
+<link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+<!-- responsive -->
+<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"  />
+{% endblock css %}
+
+
+{% block content %}
+
+<div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
+    </div>
+</div>
+<!--PreLoader Ends-->
+
+<!-- header -->
+<div class="top-header-area" id="sticker">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="/">
+                            <img width="60px" src="{% static 'assets/img/bvs school bg.png' %}" alt="school-logo">
+                        </a>
+                    </div>
+                    <!-- logo -->
+
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li><a href="http://127.0.0.1:3001/teacher_page/{{teacher.Name}}/" style="text-decoration: none;">Home</a></li>
+                            <li class="current-list-item"><a href="http://127.0.0.1:3001/teacher_page/{{teacher.Name}}/teacher_profile" style="text-decoration: none;">Profile</a></li>
+                            <li><a href="http://127.0.0.1:3001/teacher_page/{{teacher.Name}}/teacher_work" style="text-decoration: none;">Class List</a></li>
+                            <li></li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Indian Institute of Education, Honnali</p>
+                    <h1>Your Profile</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+<!-- latest news -->
+<div class="latest-news" style="margin: 40px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="container mt-2 mb-2 p-3 justify-content-between  align-content-center d-none d-md-flex">
+                <div class="card p-4 col-3 shadow-lg bg-body-tertiary rounded flex-column justify-content-between">
+                    <span class="follow d-flex flex-column" style="font-size: 14px; color: #888;">“The beautiful thing about learning is that no one can take it away from you.” <span class="d-flex justify-content-end orange-text">—B.B. King</span></span>
+                    <span class="follow d-flex flex-column" style="font-size: 14px; color: #888;">“A person who never made a mistake never tried anything new."<span class="d-flex justify-content-end orange-text">—Albert Einstein</span></span>
+                    <span class="follow d-flex flex-column" style="font-size: 14px; color: #888;">“Teachers can open the door, but you must enter it yourself.”<span class="d-flex justify-content-end orange-text">—Chinese proverb</span></span>
+                </div>
+                <div class="card p-4 col-8 shadow-lg bg-body-tertiary rounded">
+                    <div class="image d-flex flex-row justify-content-evenly align-items-center">
+                        <button class="btn btn-secondary w-50 h-100 ">
+                            {% if teacher.Gender == 'MALE' or teacher.Gender == 'Male' or teacher.Gender == 'male' %}
+                                <img src="{% static 'assets/img/boy.png' %}" height="120px" width="120px" />
+                            {% elif teacher.Gender == 'MALE' or teacher.Gender == 'Male' or teacher.Gender == 'male' %}
+                                <img src="{% static 'assets/img/girl.png' %}" height="120px" width="120px" />
+                            {% else %}
+                            <img src="{% static 'assets/img/unknown.png' %}" height="100px" width="100px" />
+                            {% endif %}
+                        </button>
+                        <div>
+                            <span class="name mt-3" style="font-weight: bold; font-size: 18px;">{{teacher.Name}}</span><br>
+                            <span class="idd" style="color: #555;">STS Teacher Id: {{teacher.STS_Teacher_Id}}</span>
+                            <div class="d-flex flex-row align-items-center gap-2">
+                                <span class="idd1" style="color: #555;">KG Id: {{teacher.KG_Id}}</span>
+                            </div>
+                            <div class="d-flex flex-row align-items-center mt-3">
+                                <span class="follow" style="font-size: 14px; color: #888;">Academic Year: {{teacher.Academic_Year}}</span>
+                            </div>
+                            <div class="text mt-1" style="font-size: 14px; color: #333;">
+                                <span>GENDER: {{teacher.Gender}}<br>Mobile No: {{teacher.Mobile_No}}</span>
+                            </div><br>
+                            <div class="d-flex mt-2">
+                                <button onclick="logout()" class="btn1 btn-dark" style="background-color: #2b2d31; color: #fff; border: none;">Log Out</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mt-2 mb-2 p-3 justify-content-center align-content-center d-flex d-md-none" >
+                <div class="card p-4 shadow-lg bg-body-tertiary rounded" id="mobile">
+                    <div class="image d-flex flex-column justify-content-center align-items-center">
+                        <button class="btn btn-secondary">
+                            {% if teacher.Gender == 'MALE' or teacher.Gender == 'Male' or teacher.Gender == 'male' %}
+                                <img src="{% static 'assets/img/boy.png' %}" height="100px" width="100px" />
+                            {% elif teacher.Gender == 'MALE' or teacher.Gender == 'Male' or teacher.Gender == 'male' %}
+                                <img src="{% static 'assets/img/girl.png' %}" height="100px" width="100px" />
+                            {% else %}
+                            <img src="{% static 'assets/img/unknown.png' %}" height="80px" width="80px" />
+                            {% endif %}
+                        </button>
+                        <span class="name mt-3" style="font-weight: bold; font-size: 18px;">{{teacher.Name}}</span>
+                        <span class="idd" style="color: #555;">STS Teacher Id: {{teacher.STS_Teacher_Id}}</span>
+                        <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                            <span class="idd1" style="color: #555;">KG Id: {{teacher.KG_Id}}</span>
+                        </div>
+                        <div class="d-flex flex-row justify-content-center align-items-center mt-3">
+                            <span class="follow" style="font-size: 14px; color: #888;">Academic Year: {{teacher.Academic_Year}}</span>
+                        </div>
+                        <div class="text mt-1" style="font-size: 14px; color: #333;">
+                            <span>GENDER: {{teacher.Gender}}<br>Mobile No: {{teacher.Mobile_No}}</span>
+                        </div><br>
+                        <div class="d-flex mt-2">
+                            <button onclick="logout()" class="btn1 btn-dark" style="background-color: #2b2d31; color: #fff; border: none;">Log Out</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- end latest news -->
+
+<!-- footer -->
+<div class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box about-widget">
+                    <h2 class="widget-title">About us</h2>
+                    <p><p>Indian Institute of Education, Honnali</p>
+                        <p>B.V.S. Pre Primary School</p>
+                        <p>Bharatiya Kannada Senior Primary School</p> 
+                        <p>B.V.S. English Medium High School</p> 
+                        <p>Indian Institute Kannada High School</p>
+                        </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box get-in-touch">
+                    <h2 class="widget-title">Get in Touch</h2>
+                    <ul>
+                        <li>Santhe Maidana, Honnali, Karnataka 577217</li>
+                        <li>Email: bkhpshonnali@gmail.com | b.v.s.honnali1987@gmail.com</li>
+                        <li>Ph: 08188-252331</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box pages">
+                    <h2 class="widget-title">Pages</h2>
+                    <ul>
+                        <li><a href="/" style="text-decoration: none;">Home</a></li>
+                        <li><a href="/about" style="text-decoration: none;">About</a></li>
+                        <li><a href="/staff" style="text-decoration: none;">Staff</a></li>
+                        <li><a href="/blog" style="text-decoration: none;">Blog</a></li>
+                        <li><a href="/contact" style="text-decoration: none;">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box subscribe">
+                    <h2 class="widget-title">Subscribe</h2>
+                    <p>Subscribe to our mailing list to get the latest updates.</p>
+                    <form action="index">
+                        <input type="email" placeholder="Email">
+                        <button type="submit"><i class="fas fa-paper-plane"><a href="http://b.v.s.honnali1987@gmail.com"></a></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
+
+<!-- copyright -->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <p>Copyrights &copy; 2019 - <a>BVS High School</a>,  All Rights Reserved.</p>
+            </div>
+            <div class="col-lg-6 text-right col-md-12">
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block script %}
+<script>
+    function logout() {
+        window.location.href = "/";
+    }
+</script>
+<!-- jquery -->
+<script src="{% static 'assets/js/jquery-1.11.3.min.js' %}"></script>
+<!-- bootstrap -->
+<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- count down -->
+<script src="{% static 'assets/js/jquery.countdown.js' %}"></script>
+<!-- isotope -->
+<script src="{% static 'assets/js/jquery.isotope-3.0.6.min.js' %}"></script>
+<!-- waypoints -->
+<script src="{% static 'assets/js/waypoints.js' %}"></script>
+<!-- owl carousel -->
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+<!-- magnific popup -->
+<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+<!-- mean menu -->
+<script src="{% static 'assets/js/jquery.meanmenu.min.js' %}"></script>
+<!-- sticker js -->
+<script src="{% static 'assets/js/sticker.js' %}"></script>
+<!-- main js -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+{% endblock script %}

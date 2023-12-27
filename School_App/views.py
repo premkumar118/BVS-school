@@ -1,5 +1,4 @@
 from django.shortcuts import redirect, render
-from django.urls import is_valid_path
 from .models import *
 
 # Create your views here.
